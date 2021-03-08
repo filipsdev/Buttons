@@ -12,26 +12,40 @@ namespace Buttons.Controllers
 
         static List<ButtonModel> buttons = new List<ButtonModel>();
         Random random = new Random();
-        // GET: Button
+
+        public ButtonController()
+        {
+            if(buttons.Count == 0)
+            {
+                for (int i = 0; i < 25; i++)
+                {
+                    if (random.Next(10) < 5)
+                    {
+                        buttons.Add(new ButtonModel(true, false));
+                    }
+
+                    else
+                    {
+                        buttons.Add(new ButtonModel(false, false));
+                    }
+
+                    // testing flags
+                    buttons[0].IsFlagged = true;
+                }
+            }
+        }
+        
         public ActionResult Index()
         {
-            
-            for(int i=0; i<25; i++)
-            {
-                if (random.Next(10) > 5)
-                    buttons.Add(new ButtonModel(true));
-                else
-                    buttons.Add(new ButtonModel(false));
-            }
-            
-            return View("Index", buttons);
+            return View("Button", buttons);
         }
 
-        public ActionResult HandleButtonClick(string mine)
+        public ActionResult OnButtonClick(string mine)
         {
             int buttonNumber = Int32.Parse(mine);
             buttons[buttonNumber].State = !buttons[buttonNumber].State;
-            return View("Index", buttons);
+            return View("Button", buttons);
         }
+
     }
 }

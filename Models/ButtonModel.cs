@@ -8,10 +8,12 @@ namespace Buttons.Models
     public class ButtonModel
     {
         public bool State { get; set; }
+        public bool IsFlagged { get; set; }
 
-        public ButtonModel(bool state)
+        public ButtonModel(bool state, bool isFlagged)
         {
             State = state;
+            IsFlagged = isFlagged;
         }
     }
 }

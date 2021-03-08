@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Images\flag.png" />
     <Content Include="Images\on.png" />
     <Content Include="Images\off.png" />
     <Content Include="Web.config" />
@@ -105,7 +106,7 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
-    <Content Include="Views\Button\Index.cshtml" />
+    <Content Include="Views\Button\Button.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

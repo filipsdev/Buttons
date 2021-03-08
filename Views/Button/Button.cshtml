@@ -1,0 +1,59 @@
+﻿@model List<Buttons.Models.ButtonModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        img{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container body-content">
+        <h1>This is the buttons page!</h1>
+        @Html.Label("Do you wanna play with buttons?")
+
+
+
+        <p>The number of buttons is @Model.Count</p>
+        @using (Html.BeginForm("OnButtonClick", "Button"))
+        {
+            for (int i = 0; i < Model.Count; i++)
+            {
+                if (i % 5 == 0)
+                {
+                    <br />
+                }
+
+                <button type="submit" name="mine" value=@i>
+                    @if (Model[@i].IsFlagged == true)
+                    {
+                        <img src="~/Images/flag.png" />
+                    }
+                    else
+                    {
+                        if (Model[@i].State == true)
+                        {
+                            <img src="~/Images/on.png" />
+                        }
+                        else
+                        {
+                            <img src="~/Images/off.png" />
+                        }
+                    }
+
+                </button>
+            }
+        }
+    </div>
+</body>
+</html>

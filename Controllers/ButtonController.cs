@@ -42,10 +42,23 @@ namespace Buttons.Controllers
 
         public ActionResult OnButtonClick(string mine)
         {
-            int buttonNumber = Int32.Parse(mine);
-            buttons[buttonNumber].State = !buttons[buttonNumber].State;
+            int mineNumber = Int32.Parse(mine);
+            if (!buttons[mineNumber].IsFlagged)
+            {
+                // only change the state of the button if the flagged property is false.
+                buttons[mineNumber].State = !buttons[mineNumber].State;
+            }
+            
             return View("Button", buttons);
         }
+        public ActionResult OnRightbuttonClick(string mine)
+        {
+            int buttonNumber = Int32.Parse(mine);
+            buttons[buttonNumber].IsFlagged = !buttons[buttonNumber].IsFlagged;
+            return View("Button", buttons);
+        }
+
+        
 
     }
 }
